@@ -1,0 +1,40 @@
+$pouletteColor : #0d8187;
+$yo : #303030;
+$back :#FFF ;
+body{
+    text-align: center;
+    background-color: $back;
+    color: $yo;
+    margin: auto;
+
+}
+header{
+    width: 90%;
+    margin: auto;
+
+    nav{
+
+        background-color: $pouletteColor;
+        margin-bottom: 0;
+    }
+    img{
+        margin-top: 0;
+        background-color: red;
+        width: 20%;
+       
+    }
+}
+main{
+    width: 80%;
+    margin: auto;
+    background-color: $pouletteColor;
+}
+footer{
+    nav{
+        width: 90%;
+        margin: auto;
+        margin-top: 50px;
+        background-color: $pouletteColor;
+    }
+    
+}
