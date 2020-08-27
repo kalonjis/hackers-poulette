@@ -9,7 +9,7 @@ body{
 
 }
 header{
-    width: 90%;
+    width: 80%;
     margin: auto;
 
     nav{
@@ -19,7 +19,6 @@ header{
     }
     img{
         margin-top: 0;
-        background-color: red;
         width: 20%;
        
     }
@@ -30,11 +29,9 @@ main{
     background-color: $pouletteColor;
 }
 footer{
-    nav{
-        width: 90%;
-        margin: auto;
-        margin-top: 50px;
-        background-color: $pouletteColor;
-    }
     
+        width: 80%;
+        margin: auto;
+        margin-top: 70px;
+        background-color: $pouletteColor;    
 }
