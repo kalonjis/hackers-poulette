@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,19 +21,30 @@
     </header>
 
     <main class="container">
+
+        <?php
+            if(empty($_SESSION['errors'])==false){?>
+            <section class="alert " role="alert" style="color:#FFF";>
+                <?php 
+                  echo implode('<br>',$_SESSION['errors']);
+                ?>
+            </section>
+            <?php unset($_SESSION['errors']);}?>
+            
+          
         <form action="contact.php" method="post" >
             <section class="row">
                 <section class="col-xl-6">
                     <article class="form-group">
                         <label for="firstname">Firstname:</label>
-                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="" aria-describedby="helpId">
+                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Enter your firstname" aria-describedby="helpId">
                         <small id="helpId" class="text-muted">firstname</small>
                     </article>
                 </section>
                 <section class="col-xl-6">
                     <article class="form-group">
                         <label for="lastname">Lastname:</label>
-                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="" aria-describedby="helpId">
+                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Enter your lastname" aria-describedby="helpId">
                         <small id="helpId" class="text-muted">lastname</small>
                     </article>
                 </section>
@@ -38,7 +52,7 @@
             <section class="contact row"></section>
                 <article class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="">
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="enter your email adress">
                     <small id="emailHelpId" class="form-text text-muted">Email</small>
                 </article>
             <section class="country" row>
@@ -64,7 +78,7 @@
                 <label for="message">Your message</label><br>
                 <textarea name="message" id="message" class="form-control"></textarea>
             </section>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <br><button type="submit" class="btn btn-light">Submit</button><br><br>
         </form>    
     </main>
     <footer>
