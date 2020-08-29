@@ -1,5 +1,6 @@
 <?php
-session_start();
+session_start(); //starting session here to collected the $_SESSION variable (error and succes) 
+require('countries.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,30 +11,43 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- my style -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Contact Support</title>
+    <title>Hackers-Poulette StephK</title>
 </head>
 <body>
     <header>
-        <nav>menu</nav>
-       
-            <img src=" assets/img/logo.png " alt="">
-       
+        <nav>menu</nav>      
+            <img src=" assets/img/logo.png " alt="Hackers-Poulette's logo">
     </header>
 
     <main class="container">
-
+        <!-- displaying error information for the user  -->
         <?php
-            if(empty($_SESSION['errors'])==false){?>
-            <section class="alert " role="alert" style="color:#FFF";>
-                <?php 
-                  echo implode('<br>',$_SESSION['errors']);
-                ?>
-            </section>
-            <?php unset($_SESSION['errors']);}?>
-            
-          
+            if(empty($_SESSION['errors'])==false){
+        ?>
+                <br>
+                <section class="alert alert-danger" role="alert";>
+                    <?php 
+                    echo implode('<br>',$_SESSION['errors']);
+                    ?>
+                </section>
+            <?php unset($_SESSION['errors']);
+            }?>
+        <?php
+            if(empty($_SESSION['success'])==false){
+        ?>
+                <br>
+                <section class="alert alert-success" role="alert" ;>
+                    <?php 
+                    echo "Your message has been successfully forwarded.  Check your email for further information";
+                    ?>
+                </section>
+                <?php unset($_SESSION['success']);
+            }?>    
+        <!-- contact form    -->
         <form action="contact.php" method="post" >
+            <!-- name section  -->
             <section class="row">
+                <!-- firstname section -->
                 <section class="col-xl-6">
                     <article class="form-group">
                         <label for="firstname">Firstname:</label>
@@ -41,6 +55,7 @@ session_start();
                         <small id="helpId" class="text-muted">firstname</small>
                     </article>
                 </section>
+                <!-- lastname section  -->
                 <section class="col-xl-6">
                     <article class="form-group">
                         <label for="lastname">Lastname:</label>
@@ -49,31 +64,55 @@ session_start();
                     </article>
                 </section>
             </section>
-            <section class="contact row"></section>
+            <!-- gender section  -->
+            <section class="gender row">
+                <article class="radio-gender col" >
+                    <label for="male">Man</label>
+                    <input type="radio" name="gender" value="M" checked id="male">
+                    <label for="female">Woman</label>
+                    <input type="radio" name="gender" value="F" id="female">
+                </article>
+            </section>
+            <!-- email section  -->
+            <section class="email">
                 <article class="form-group">
-                    <label for="email">Email:</label>
+                    <label for="email">Email</label>
                     <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="enter your email adress">
                     <small id="emailHelpId" class="form-text text-muted">Email</small>
                 </article>
-            <section class="country" row>
+            </section>
+            <!-- country section      -->
+            <section class="country ">
                 <article class="form-group">
                     <label for="country">Country</label>
-                    <select class="custom-select" name="country" id="country">
-                        <option selected>Select your country</option>
+                    <select class="custom-select" name="country" id="country" required>
+                        <option selected value="Select your country">Select your country</option>
                         <?php
-                    // A sample countries array
-                    $countries = ['Belgium','RDCongo','Spain','France','Italy','Germany','Luxemburg','United Kingdom', 'Portugal','United States of America'];  
-                    
-                    // Iterating through the country array
-                        foreach($countries as $country){
-                    ?>
-                        <option value="<?php echo strtolower($country); ?>"><?php echo $country; ?></option>
+                            // A sample countries array
+                            // Iterating through the country array
+                                foreach($countries as $country){
+                        ?>
+                                    <option value="<?php echo strtolower($country); ?>"><?php echo $country;?></option>
                         <?php
                         }
                         ?>
                     </select>
                 </article>
             </section>
+            <!-- service section  -->
+            <section class="service">
+                <article class="form-group">
+                  <label for="service">Service</label>
+                  <select class="custom-select" name="service" id="service" required>
+                      <option selected>Select your service</option>
+                      <option value="0">Repair</option>
+                      <option value="1">Claim</option>
+                      <option value="2">Other</option>
+                  </select>
+                </article>
+            </section>          
+
+            <!-- message section  -->
             <section class="form-group">
                 <label for="message">Your message</label><br>
                 <textarea name="message" id="message" class="form-control"></textarea>

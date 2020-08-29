@@ -1,19 +1,23 @@
 <?php
 var_dump($_POST);
-//variables $error
+
+//variables $errors[]
 $errors = [];
 
 if (!isset($_POST['firstname'])||$_POST['firstname']=="" ) {
     $errors['firstname'] =  "error firstname";
 }
 if (!isset($_POST['lastname'])||$_POST['lastname']=="") {
-    $errors['lastname'] = "error last";
+    $errors['lastname'] = "error lastname";
 }
 if (!isset($_POST['email'])||$_POST['email']=="" ) {
     $errors['email'] =  "error email";
 }
-if (!isset($_POST['country'])||$_POST['country']==='Select your country' ) {
+if (!isset($_POST['country'])) {
     $error['country'] =  "Select your country";
+}
+if (!isset($_POST['service'])) {
+    $errors['service'] =  "error service";
 }
 if (!isset($_POST['message'])||$_POST['message']=="" ) {
     $errors['message'] =  "error message";
@@ -22,20 +26,26 @@ if (!isset($_POST['message'])||$_POST['message']=="" ) {
 
 // processing
 
+session_start();//use to link the variables with other php pages
+
 if(empty($errors)){ //if no error collected
-    echo 'succes';
     $message = $_POST['message'];
     $header = 'FROM : raspberry@poulette.com';
     // mail('support@poulette.com','subject', $message, $header);
+    
+    //informing the user for succes
+    header('location:index.php');//return to the index.php
+    $_SESSION['success']='success'; //variable used in the session accross othe pages
+
 } else{//if some error collected
     
-    header('location:index.php');//return error info to the index.php
-    session_start();//use to link the variables with other php pages
-    $_SESSION['errors']=$errors;
+    //informing the user for succes
+    header('location:index.php');//return to the index.php
+    $_SESSION['errors']=$errors; //variable used in the session accross othe pages
 }
 
 
 
 
-// mail($to, $subject, $message, $additional_headers = null, $additional_parameters = null)
+
 ?>
