@@ -1,4 +1,7 @@
 <?php
+
+$messageSent= false;
+
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
@@ -23,20 +26,21 @@ try {
     $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom('from@example.com', 'Mailer');
-    $mail->addAddress('kalonjistephane@gmail.com', 'steph');     // Add a recipient
+    $mail->setFrom('hackerpoulsteph@gmail.com', 'Hackers-PoulSteph');
+    $mail->addAddress($email, "$firstname $lastname");     // Add a recipient
     
 
     
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->Subject = "Your have contacted our service: $service";
+    $mail->Body    = "Here is a copy of your message : <br><br> \" $message\" ";
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
     echo 'Message has been sent';
+    $messageSent= true;
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }

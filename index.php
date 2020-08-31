@@ -20,18 +20,7 @@ require('countries.php');//fetch the variable $countries from countries.php
     </header>
 
     <main class="container"><br>
-        <!-- displaying error information for the user  -->
-        <?php
-            if(empty($_SESSION['errors'])==false){
-        ?>
-                <br>
-                <section class="alert alert-danger" role="alert";>
-                    <?php 
-                    echo implode('<br>',$_SESSION['errors']);
-                    ?>
-                </section>
-            <?php unset($_SESSION['errors']);
-            }?>
+        <!-- displaying a success information for the user  -->
         <?php
             if(empty($_SESSION['success'])==false){
         ?>
@@ -52,7 +41,11 @@ require('countries.php');//fetch the variable $countries from countries.php
                     <article class="form-group">
                         <label for="firstname">Firstname:</label>
                         <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Enter your firstname" aria-describedby="helpId">
-                        <small id="helpId" class="text-muted">firstname</small>
+                        <?php if(empty($_SESSION['errors']['firstname'])==false){?>
+                                <span class="error" style="color:red";>
+                                    <?php echo $_SESSION['errors']['firstname'];    
+                               }?>
+                                </span>   
                     </article>
                 </section>
                 <!-- lastname section  -->
@@ -60,7 +53,11 @@ require('countries.php');//fetch the variable $countries from countries.php
                     <article class="form-group">
                         <label for="lastname">Lastname:</label>
                         <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Enter your lastname" aria-describedby="helpId">
-                        <small id="helpId" class="text-muted">lastname</small>
+                        <?php if(empty($_SESSION['errors']['lastname'])==false){?>
+                                <span class="error" style="color:red";>
+                                    <?php echo $_SESSION['errors']['lastname'];    
+                               }?>
+                                </span>
                     </article>
                 </section>
             </section>
@@ -78,7 +75,11 @@ require('countries.php');//fetch the variable $countries from countries.php
                 <article class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="Enter your email adress">
-                    <small id="emailHelpId" class="form-text text-muted">Email</small>
+                    <?php if(empty($_SESSION['errors']['email'])==false){?>
+                                <span class="error" style="color:red";>
+                                    <?php echo $_SESSION['errors']['email'];    
+                               }?>
+                                </span>
                 </article>
             </section>
             <!-- country section -->
@@ -97,17 +98,22 @@ require('countries.php');//fetch the variable $countries from countries.php
                         }
                         ?>
                     </select>
+                    <?php if(empty($_SESSION['errors']['country'])==false){?>
+                                <span class="error" style="color:red";>
+                                    <?php echo $_SESSION['errors']['country'];    
+                               }?>
+                                </span>
                 </article>
             </section>
             <!-- service section  -->
-            <section class="service">
+            <section class="subject">
                 <article class="form-group">
-                  <label for="service">Service</label>
-                  <select class="custom-select" name="service" id="service" required>
-                      <option selected>Select your service</option>
-                      <option value="0">Repair</option>
-                      <option value="1">Claim</option>
-                      <option selected value="2">Other</option>
+                  <label for="subject">Subject</label>
+                  <select class="custom-select" name="subject" id="subject" required>
+                      <option >Select your subject</option>
+                      <option value="Repair">Repair</option>
+                      <option value="Claim">Claim</option>
+                      <option selected value="Other">Other</option>
                   </select>
                 </article>
             </section>          
@@ -116,6 +122,11 @@ require('countries.php');//fetch the variable $countries from countries.php
             <section class="form-group">
                 <label for="message">Your message</label><br>
                 <textarea name="message" id="message" class="form-control" placeholder="Enter your message"></textarea>
+                <?php if(empty($_SESSION['errors']['message'])==false){?>
+                                <span class="error" style="color:red";>
+                                    <?php echo $_SESSION['errors']['message'];    
+                               }?>
+                                </span>
             </section>
             <br><button type="submit" class="btn btn-light">Submit</button><br><br>
         </form>    
@@ -129,3 +140,4 @@ require('countries.php');//fetch the variable $countries from countries.php
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
 </body>
 </html>
+<?php unset($_SESSION['errors']);?>
