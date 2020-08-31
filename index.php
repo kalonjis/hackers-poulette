@@ -1,6 +1,6 @@
 <?php
 session_start(); //starting session here to collected the $_SESSION variable (error and succes) 
-require('countries.php');
+require('countries.php');//fetch the variable $countries from countries.php
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +19,7 @@ require('countries.php');
             <img src=" assets/img/logo.png " alt="Hackers-Poulette's logo">
     </header>
 
-    <main class="container">
+    <main class="container"><br>
         <!-- displaying error information for the user  -->
         <?php
             if(empty($_SESSION['errors'])==false){
@@ -77,11 +77,11 @@ require('countries.php');
             <section class="email">
                 <article class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="enter your email adress">
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="Enter your email adress">
                     <small id="emailHelpId" class="form-text text-muted">Email</small>
                 </article>
             </section>
-            <!-- country section      -->
+            <!-- country section -->
             <section class="country ">
                 <article class="form-group">
                     <label for="country">Country</label>
@@ -107,7 +107,7 @@ require('countries.php');
                       <option selected>Select your service</option>
                       <option value="0">Repair</option>
                       <option value="1">Claim</option>
-                      <option value="2">Other</option>
+                      <option selected value="2">Other</option>
                   </select>
                 </article>
             </section>          
@@ -115,7 +115,7 @@ require('countries.php');
             <!-- message section  -->
             <section class="form-group">
                 <label for="message">Your message</label><br>
-                <textarea name="message" id="message" class="form-control"></textarea>
+                <textarea name="message" id="message" class="form-control" placeholder="Enter your message"></textarea>
             </section>
             <br><button type="submit" class="btn btn-light">Submit</button><br><br>
         </form>    

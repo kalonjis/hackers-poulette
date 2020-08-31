@@ -1,4 +1,5 @@
 <?php
+
 var_dump($_POST);
 
 //variables $errors[]
@@ -31,10 +32,10 @@ session_start();//use to link the variables with other php pages
 if(empty($errors)){ //if no error collected
     $message = $_POST['message'];
     $header = 'FROM : raspberry@poulette.com';
-    // mail('support@poulette.com','subject', $message, $header);
+    require "mail.php";
     
     //informing the user for succes
-    header('location:index.php');//return to the index.php
+    // header('location:index.php');//return to the index.php
     $_SESSION['success']='success'; //variable used in the session accross othe pages
 
 } else{//if some error collected
