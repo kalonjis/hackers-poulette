@@ -65,9 +65,9 @@ require('countries.php');//fetch the variable $countries from countries.php
             <section class="gender row">
                 <article class="radio-gender col" >
                     <label for="male">Man</label>
-                    <input type="radio" name="gender" value="M" checked id="male">
+                    <input type="radio" name="gender" value="Mr" checked id="male">
                     <label for="female">Woman</label>
-                    <input type="radio" name="gender" value="F" id="female">
+                    <input type="radio" name="gender" value="Miss" id="female">
                 </article>
             </section>
             <!-- email section  -->

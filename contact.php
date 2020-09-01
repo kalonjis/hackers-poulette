@@ -5,8 +5,9 @@ session_start();//use to link the variables with other php pages
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 $email = $_POST['email'];
+$gender = $_POST['gender'];
 $country = $_POST['country'];
-$service = $_POST['subject'];
+$subject = $_POST['subject'];
 $message = $_POST['message'];
 
 // $options = array(
@@ -60,7 +61,6 @@ if (!isset($country)||$country == "Select your country") {
 if (!isset($message)||$message =="" ) {
     $errors['message'] =  "Please write your message";
 }else{
-    $message = test_input($message);
     $message =filter_var($message,FILTER_SANITIZE_STRING);
 }
 
