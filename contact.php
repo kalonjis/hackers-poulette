@@ -20,6 +20,7 @@ $message = $_POST['message'];
 
     //variables $errors[]
 $errors = [];
+
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -27,6 +28,10 @@ function test_input($data) {
     return $data;
 }
 
+if (isset($_POST['pseudo']) && !empty($_POST['pseudo'])) { // honeypot 
+    // $errors['BotCatched'] = "Bot is trying to spam";
+    header('location:index.php');
+}
 if (!isset($firstname)||$firstname=="" ) {
     $errors['firstname'] =  "Please fill in the firstname field";
     

@@ -37,7 +37,11 @@ main{
     width: 80%;
     margin: auto;
     background-color: $pouletteColor;
-
+    
+    //hidding honeypot field
+    #pseudo{
+        display: none;
+    }
 }
 footer{
     

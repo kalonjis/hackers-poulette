@@ -43,6 +43,7 @@ require('countries.php');//fetch the variable $countries from countries.php
                     <article class="form-group">
                         <label for="firstname">Firstname <strong class="text-danger">*</strong></label>
                         <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Enter your firstname" aria-describedby="firstname">
+                        <input type="texte" name="pseudo" id="pseudo">
                         <?php if(empty($_SESSION['errors']['firstname'])==false){?>
                                 <span class="error" style="color:red";>
                                     <?php echo $_SESSION['errors']['firstname'];    
