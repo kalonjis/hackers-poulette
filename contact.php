@@ -6,11 +6,18 @@ $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 $email = $_POST['email'];
 $country = $_POST['country'];
-$service = $_POST['service'];
+$service = $_POST['subject'];
 $message = $_POST['message'];
 
+// $options = array(
+//     'firstname' => ,
+//     'lastName' => FILTER_SANITIZE_STRING,
+//     'email' => FILTER_VALIDATE_EMAIL,
+//     'message' => FILTER_SANITIZE_STRING);
 
-//variables $errors[]
+// $result = filter_input_array(INPUT_POST, $options);
+
+    //variables $errors[]
 $errors = [];
 function test_input($data) {
     $data = trim($data);
@@ -19,31 +26,42 @@ function test_input($data) {
     return $data;
 }
 
-if (!isset($_POST['firstname'])||$_POST['firstname']=="" ) {
+if (!isset($firstname)||$firstname=="" ) {
     $errors['firstname'] =  "Please fill in the firstname field";
     
-}else{
-    test_input($firstname);
+}else {
+    $firstname = test_input($firstname);
+    if (!preg_match("/^[a-zA-Z-' ]*$/",$firstname)) {
+        $errors['firstname'] =  "Only letters and white space allowed";
+    }  
 }
-if (!isset($_POST['lastname'])||$_POST['lastname']=="") {
+if (!isset($lastname)||$lastname =="") {
     $errors['lastname'] = "Please fill in the lastname field ";
 }else{
-    test_input($lastname);
+    $lastname = test_input($lastname);
+    if (!preg_match("/^[a-zA-Z-' ]*$/",$lastname)) {
+        $errors['lastname'] =  "Only letters and white space allowed";
+    }  
 }
-if (!isset($_POST['email'])||$_POST['email']=="" ) {
+if (!isset($email)||$email =="" ) {
     $errors['email'] =  "Please fill in the email field";
 }else{
-    test_input($email);
+    $email = test_input($email);
+    if (!filter_var($email,FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] =  "Please enter a valid email adress";
+    }  
+    
 }
-if (!isset($_POST['country'])||$_POST['country']== "Select your country") {
+if (!isset($country)||$country == "Select your country") {
     $errors['country'] =  "Please select your country";
 }
 
 
-if (!isset($_POST['message'])||$_POST['message']=="" ) {
+if (!isset($message)||$message =="" ) {
     $errors['message'] =  "Please write your message";
 }else{
-    test_input($message);
+    $message = test_input($message);
+    $message =filter_var($message,FILTER_SANITIZE_STRING);
 }
 
 
