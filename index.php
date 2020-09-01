@@ -42,8 +42,8 @@ require('pages/countries.php');//fetch the variable $countries from countries.ph
                 <section class="col-xl-6">
                     <article class="form-group">
                         <label for="firstname">Firstname <strong class="text-danger">*</strong></label>
-                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Enter your firstname" aria-describedby="firstname">
-                        <input type="texte" name="pseudo" id="pseudo">
+                        <input type="text" name="firstname" id="firstname" class="form-control" value="<?=isset($_SESSION['inputs']['firstname']) ? $_SESSION['inputs']['firstname']:'';?>" placeholder="Enter your firstname" aria-describedby="firstname">
+                        <input type="texte" name="pseudo" id="pseudo" value="<?=isset($_SESSION['inputs']['pseudo']) ? $_SESSION['inputs']['pseudo']:'';?>">
                         <?php if(empty($_SESSION['errors']['firstname'])==false){?>
                                 <span class="error" style="color:red";>
                                     <?php echo $_SESSION['errors']['firstname'];    
@@ -55,7 +55,7 @@ require('pages/countries.php');//fetch the variable $countries from countries.ph
                 <section class="col-xl-6">
                     <article class="form-group">
                         <label for="lastname">Lastname <strong class="text-danger">*</strong></label>
-                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Enter your lastname" aria-describedby="helpId">
+                        <input type="text" name="lastname" id="lastname" value="<?=isset($_SESSION['inputs']['lastname']) ? $_SESSION['inputs']['lastname']:'';?>" class="form-control" placeholder="Enter your lastname" aria-describedby="helpId">
                         <?php if(empty($_SESSION['errors']['lastname'])==false){?>
                                 <span class="error" style="color:red";>
                                     <?php echo $_SESSION['errors']['lastname'];    
@@ -77,7 +77,7 @@ require('pages/countries.php');//fetch the variable $countries from countries.ph
             <section class="email">
                 <article class="form-group">
                     <label for="email">Email <strong class="text-danger">*</strong></label>
-                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="Enter your email adress">
+                    <input type="email" class="form-control" name="email" id="email" value="<?=isset($_SESSION['inputs']['email']) ? $_SESSION['inputs']['email']:'';?>" aria-describedby="emailHelpId" placeholder="Enter your email adress">
                     <?php if(empty($_SESSION['errors']['email'])==false){?>
                                 <span class="error" style="color:red";>
                                     <?php echo $_SESSION['errors']['email'];    
@@ -124,7 +124,9 @@ require('pages/countries.php');//fetch the variable $countries from countries.ph
             <!-- message section  -->
             <section class="form-group">
                 <label for="message">Your message <strong class="text-danger">*</strong></label><br>
-                <textarea name="message" id="message" class="form-control" placeholder="Enter your message"></textarea>
+                <textarea name="message" id="message" class="form-control" placeholder="Enter your message">
+                    <?=isset($_SESSION['inputs']['message']) ? $_SESSION['inputs']['message']:'';?>
+                </textarea>
                 <?php if(empty($_SESSION['errors']['message'])==false){?>
                                 <span class="error" style="color:red";>
                                     <?php echo $_SESSION['errors']['message'];    
@@ -132,7 +134,7 @@ require('pages/countries.php');//fetch the variable $countries from countries.ph
                                 </span>
             </section>
             <br><button type="submit" class="btn btn-light">Submit</button><br><br>
-        </form>    
+        </form>
     </main>
     <footer>
         <p>&copy; <a href="https://becode.org/">BeCode</a> -
@@ -143,4 +145,9 @@ require('pages/countries.php');//fetch the variable $countries from countries.ph
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
 </body>
 </html>
-<?php unset($_SESSION['errors']);?>
+
+<!-- clearing "$_SESSION" variables -->
+<?php 
+    unset($_SESSION['errors']);
+    unset($_SESSION['inputs']);
+?>

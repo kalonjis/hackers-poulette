@@ -35,7 +35,7 @@ try {
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = "Your have contacted our $subject service";
-    $mail->Body    = "Thank you $gender $lastname for contacting us.<br><br>Here is a copy of your message : <br><br> \" $message\" <br><br> We will get back to you within the next 48 hours. <br><br>Have a good hacking time!";
+    $mail->Body    = " $gender $lastname, <br>Thank you for contacting us.<br>Here is a copy of your message : <br><br> \" $message\" <br><br> We will get back to you within the next 48 hours. <br><br>Have a good hacking time!<br><em>The Hackers-Poulette Team</em>";
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();

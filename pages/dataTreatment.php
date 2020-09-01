@@ -90,7 +90,7 @@ if(empty($errors)){ //if no error collected
     //informing the user for succes
     header('location:../index.php');//return to the index.php
     $_SESSION['errors']= $errors; //errors returned to index.php
-    $_SESSION['input']= $_POST;
+    $_SESSION['inputs']= $_POST;
 }
 
 
