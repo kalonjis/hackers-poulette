@@ -9,7 +9,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 // Load Composer's autoloader
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
@@ -34,8 +34,8 @@ try {
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = "Your have contacted our $ubject service";
-    $mail->Body    = "Thank you $gender $lastname for contacting us.<br><br>Here is a copy of your message : <br><br> \" $message\" <br><br> We will answer you between the next 48 ours. <br><br>Have a good hacking time!";
+    $mail->Subject = "Your have contacted our $subject service";
+    $mail->Body    = "Thank you $gender $lastname for contacting us.<br><br>Here is a copy of your message : <br><br> \" $message\" <br><br> We will get back to you within the next 48 hours. <br><br>Have a good hacking time!";
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();

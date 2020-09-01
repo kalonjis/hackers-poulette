@@ -1,6 +1,6 @@
 <?php
 session_start(); //starting session here to collected the $_SESSION variable (error and succes) 
-require('countries.php');//fetch the variable $countries from countries.php
+require('pages/countries.php');//fetch the variable $countries from countries.php
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +34,7 @@ require('countries.php');//fetch the variable $countries from countries.php
                 <?php unset($_SESSION['success']);
             }?>    
         <!-- contact form    -->
-        <form action="contact.php" method="post" >
+        <form action="pages/dataTreatment.php" method="post" >
         <p>Fields marked with <strong class="text-danger">*</strong> are required</p>
             <!-- name section  -->
             <section class="row">

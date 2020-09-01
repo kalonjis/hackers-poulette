@@ -80,7 +80,7 @@ if(empty($errors)){ //if no error collected
     //informing the user for succes
     if($messageSent){
         $_SESSION['success']='success'; //variable used in the session accross othe pages
-        header('location:index.php');//return to the index.php
+        header('location:../index.php');//return to the index.php
     }
     else
         echo $data;
@@ -88,8 +88,9 @@ if(empty($errors)){ //if no error collected
 } else{//if some error collected
     
     //informing the user for succes
-    header('location:index.php');//return to the index.php
-    $_SESSION['errors']=$errors; //variable used in the session accross othe pages
+    header('location:../index.php');//return to the index.php
+    $_SESSION['errors']= $errors; //errors returned to index.php
+    $_SESSION['input']= $_POST;
 }
 
 
