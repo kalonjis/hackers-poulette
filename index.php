@@ -7,11 +7,12 @@ require('countries.php');//fetch the variable $countries from countries.php
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackers-Poulette StephK</title>
     <!-- bootstrap style -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- my style -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Hackers-Poulette StephK</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Bellota:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"> -->
 </head>
 <body>
     <header>
@@ -34,13 +35,14 @@ require('countries.php');//fetch the variable $countries from countries.php
             }?>    
         <!-- contact form    -->
         <form action="contact.php" method="post" >
+        <p>Fields marked with <strong class="text-danger">*</strong> are required</p>
             <!-- name section  -->
             <section class="row">
                 <!-- firstname section -->
                 <section class="col-xl-6">
                     <article class="form-group">
-                        <label for="firstname">Firstname:</label>
-                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Enter your firstname" aria-describedby="helpId">
+                        <label for="firstname">Firstname <strong class="text-danger">*</strong></label>
+                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Enter your firstname" aria-describedby="firstname">
                         <?php if(empty($_SESSION['errors']['firstname'])==false){?>
                                 <span class="error" style="color:red";>
                                     <?php echo $_SESSION['errors']['firstname'];    
@@ -51,7 +53,7 @@ require('countries.php');//fetch the variable $countries from countries.php
                 <!-- lastname section  -->
                 <section class="col-xl-6">
                     <article class="form-group">
-                        <label for="lastname">Lastname:</label>
+                        <label for="lastname">Lastname <strong class="text-danger">*</strong></label>
                         <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Enter your lastname" aria-describedby="helpId">
                         <?php if(empty($_SESSION['errors']['lastname'])==false){?>
                                 <span class="error" style="color:red";>
@@ -73,7 +75,7 @@ require('countries.php');//fetch the variable $countries from countries.php
             <!-- email section  -->
             <section class="email">
                 <article class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Email <strong class="text-danger">*</strong></label>
                     <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="Enter your email adress">
                     <?php if(empty($_SESSION['errors']['email'])==false){?>
                                 <span class="error" style="color:red";>
@@ -85,7 +87,7 @@ require('countries.php');//fetch the variable $countries from countries.php
             <!-- country section -->
             <section class="country ">
                 <article class="form-group">
-                    <label for="country">Country</label>
+                    <label for="country">Country <strong class="text-danger">*</strong></label>
                     <select class="custom-select" name="country" id="country" required>
                         <option selected value="Select your country">Select your country</option>
                         <?php
@@ -120,7 +122,7 @@ require('countries.php');//fetch the variable $countries from countries.php
 
             <!-- message section  -->
             <section class="form-group">
-                <label for="message">Your message</label><br>
+                <label for="message">Your message <strong class="text-danger">*</strong></label><br>
                 <textarea name="message" id="message" class="form-control" placeholder="Enter your message"></textarea>
                 <?php if(empty($_SESSION['errors']['message'])==false){?>
                                 <span class="error" style="color:red";>

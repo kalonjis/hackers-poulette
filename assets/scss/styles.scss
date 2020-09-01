@@ -1,12 +1,22 @@
+
 $pouletteColor : #0d8187;
 $yo : #303030;
 $back :#FFF ;
+@font-face {
+    font-family: "bellotabold";
+    src: url("../font/Bellota-Bold.otf");
+  
+    font-weight: normal;
+    font-style: normal;
+}
+
 body{
     text-align: center;
     background-color: $back;
     color: $yo;
     margin: auto;
-
+    font-family: "bellotabold";
+    
 }
 header{
     width: 80%;

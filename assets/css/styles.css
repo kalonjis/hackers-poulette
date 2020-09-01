@@ -1,8 +1,16 @@
+@font-face {
+  font-family: "bellotabold";
+  src: url("../font/Bellota-Bold.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   text-align: center;
   background-color: #FFF;
   color: #303030;
   margin: auto;
+  font-family: "bellotabold";
 }
 
 header {
@@ -32,4 +40,4 @@ footer {
   margin-top: 70px;
   background-color: #0d8187;
 }
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=styles.css.map */
