@@ -52,7 +52,7 @@ if (!isset($lastname)||$lastname =="") {
 if (!isset($email)||$email =="" ) {
     $errors['email'] =  "Please fill in the email field";
 }else{
-    $email = test_input($email);
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     if (!filter_var($email,FILTER_VALIDATE_EMAIL)) {
         $errors['email'] =  "Please enter a valid email adress";
     }  
