@@ -10,15 +10,6 @@ $country = $_POST['country'];
 $subject = $_POST['subject'];
 $message = $_POST['message'];
 
-// $options = array(
-//     'firstname' => ,
-//     'lastName' => FILTER_SANITIZE_STRING,
-//     'email' => FILTER_VALIDATE_EMAIL,
-//     'message' => FILTER_SANITIZE_STRING);
-
-// $result = filter_input_array(INPUT_POST, $options);
-
-    //variables $errors[]
 $errors = [];
 
 function test_input($data) {
@@ -30,7 +21,7 @@ function test_input($data) {
 
 if (isset($_POST['pseudo']) && !empty($_POST['pseudo'])) { // honeypot 
     // $errors['BotCatched'] = "Bot is trying to spam";
-    header('location:index.php');
+    header('location:../index.php');
 }
 if (!isset($firstname)||$firstname=="" ) {
     $errors['firstname'] =  "Please fill in the firstname field";
@@ -79,7 +70,7 @@ if(empty($errors)){ //if no error collected
     $data = ob_get_contents();
     //informing the user for succes
     if($messageSent){
-        $_SESSION['success']='success'; //variable used in the session accross othe pages
+        $_SESSION['success']='success'; //variable used in the session accross other pages
         header('location:../index.php');//return to the index.php
     }
     else
@@ -92,9 +83,4 @@ if(empty($errors)){ //if no error collected
     $_SESSION['errors']= $errors; //errors returned to index.php
     $_SESSION['inputs']= $_POST;
 }
-
-
-
-
-
 ?>

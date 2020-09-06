@@ -38,6 +38,10 @@ main #pseudo {
   display: none;
 }
 
+main textarea {
+  text-align: left;
+}
+
 footer {
   width: 80%;
   margin: auto;
