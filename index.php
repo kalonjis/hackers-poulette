@@ -34,7 +34,7 @@ require('pages/countries.php');//fetch the variable $countries from countries.ph
                 <?php unset($_SESSION['success']);
             }?>    
         <!-- contact form    -->
-        <form action="pages/dataTreatment.php" method="post" >
+        <form action="pages/process_form.php" method="post" >
         <p>Fields marked with <strong class="text-danger">*</strong> are required</p>
             <!-- name section  -->
             <section class="row">

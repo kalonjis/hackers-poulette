@@ -1,0 +1,38 @@
+# Composer directories
+/vendor/
+
+# Composer's autoload generated files
+composer/autoload/
+
+# Composer lock file (optionnel, si tu souhaites ne pas versionner le fichier de verrouillage)
+# composer.lock
+
+# PHPStorm or IDEs specific
+.idea/
+
+# XAMPP, MAMP, WAMP or other local server environments
+/xampp/
+/mamp/
+/wamp/
+/htdocs/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.sql
+*.sqlite
+*.bak
+*.swp
+*.swo
+
+# .env files (for security reasons, do not commit sensitive info)
+.env
+
+# PHPUnit or other test-related files
+phpunit.xml
+phpunit.xml.dist
+
+# Any other custom files/folders that you don't want to commit
