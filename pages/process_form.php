@@ -21,7 +21,7 @@ $errors = validate_form($_POST);
 // Si aucune erreur, insérer dans la base de données et envoyer l'email
 if (empty($errors)) {
     // Préparer la requête SQL pour l'insertion des données
-    $stmt = $conn->prepare("INSERT INTO user (firstname, lastname, email, gender, country, subject, message) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO user_ (firstname, lastname, email, gender, country, subject, message) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("sssssss", $firstname, $lastname, $email, $gender, $country, $subject, $message);
 
     // Exécuter la requête préparée
